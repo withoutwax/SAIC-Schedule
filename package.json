@@ -1,0 +1,11 @@
+{
+  "name": "saicschedule",
+  "version": "1.0.0",
+  "description": "This is simple Full-Stack Web application which shows the Time Schedule for the semester. All the input are inserted through the input bar and displayed on the same webpage.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
