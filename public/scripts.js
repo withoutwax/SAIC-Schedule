@@ -25,9 +25,21 @@ $(document).ready(function() {
         alert('Error: ' + errorMessage);
     	}
 		});
-
 	});
 
+	$("#getRequestButton").on('click', function() {
+		$.ajax({
+			url: '/course',
+			type: 'GET',
+
+			success: function(data) {
+				console.log(data[0].courseTitle);
+			},
+			error: function(jqXhr, textStatus, errorMessage) {
+				// error Callback
+			}
+		});
+	});
 
 
 		/*
