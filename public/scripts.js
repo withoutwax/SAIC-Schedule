@@ -1,6 +1,81 @@
 $(document).ready(function() {
-	
 
+	// Connecting to Endpoint via AJAX
+	$("#submitButton").on('click', function() {
+		var courseData = {
+			courseTitle: $('input#courseTitleInput').val(),
+			courseNumber: $('input#courseNumberInput').val(),
+			roomNumber: $('input#roomInput').val(),
+			instructor: $('input#instructorInput').val()
+		}
+
+
+		$.ajax({
+			url: '/course',
+			type: 'POST',
+			contentType:"application/json",
+			data: JSON.stringify(courseData),
+			processData: false,
+			dataType: "json",
+
+			success: function(data) {
+				alert(`Successfully Entered ${courseData.courseTitle} into the Database!`);
+			},
+			error: function (jqXhr, textStatus, errorMessage) { // error callback
+        alert('Error: ' + errorMessage);
+    	}
+		});
+
+	});
+
+
+
+		/*
+		$.ajax({
+			url: '/course',
+			dataType: "json",
+			type: 'POST',
+			contentType:"application/json",
+			data: JSON.stringify(courseData),
+			processData: false,
+
+
+			success: function(data) {
+				console.log('success');
+				console.log(data);
+			},
+			error: function (xhr, status, error) {
+        console.log('Error: ' + error.message);
+      },
+
+		});
+		*/
+
+	/*
+	function getItem() {
+		$.ajax({
+			url: '/course',
+			type: 'GET',
+			success: function(data) {
+				alert('success');
+			},
+			error: function (xhr, status, error) {
+        console.log('Error: ' + error.message);
+      },
+
+		});
+	}
+*/
+
+
+
+
+
+
+
+// LOCAL data use - no Back-End Connections
+// The code underneath is used just to create and update data without using MongoDB and Server
+/*
 	var dateVal;
 	var timeVal;
 
@@ -8,12 +83,12 @@ $(document).ready(function() {
 		var date = $(this).find("option:selected").text();
 		dateVal = date;
 	});
-	
+
 	$(".timeInput").change(function(){
 		var time = $(this).find("option:selected").text();
 		timeVal = time;
 	});
-	
+
 
 
 
@@ -21,13 +96,13 @@ $(document).ready(function() {
 	$("#submitButton").click(function(e) {
 		e.preventDefault(); //Bootstrap button refreshes page as a default - since this refreshes the jQuery code as well, this code will prevent from the default page loader.
 
-		
+
 
 		 var courseTitleVal = $('input#courseTitleInput').val();
 		 var courseNumberVal = $('input#courseNumberInput').val();
 		 var roomNumberVal = $('input#roomInput').val();
 		 var instructorVal = $('input#instructorInput').val();
-		 
+
 
 
 
@@ -42,7 +117,7 @@ $(document).ready(function() {
 
 		$("#timeOutput").text(timeVal);
 
-		
+
 		var timeTableVal = "<p>" + courseTitleVal + "</p>" + "<p>" + courseNumberVal + "</p>" + "<p>" + roomNumberVal + "</p>" + "<p>" + instructorVal + "</p>";
 
 		switch(dateVal) {
@@ -98,4 +173,5 @@ function addTimeTable(timeVal, timeTableVal, dayOfTheWeek) {
 		$(".eveningClass").children().eq(dayOfTheWeek).addClass("saicClass");
 		$(".eveningClass").children().eq(dayOfTheWeek).html(timeTableVal);
 				}
-}
+				*/
+});

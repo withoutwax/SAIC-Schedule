@@ -2,26 +2,31 @@ const express = require('express');
 const router = express.Router();
 const SAICdb = require('../models/models');
 
-router.get('/course', (req, res) => {
+router.get('/course', (req, res, next) => {
   SAICdb.find({}, (err, course) => {
     res.json(course);
   });
 });
 
-router.post('/course', (req, res) => {
+
+router.post('/course', (req, res, next) => {
   SAICdb.create(req.body).then(function(schedule){
-    res.send(schedule);
+    return res.send(schedule);
     console.log("The data has been entered into the database");
-  });
-  res.end();
+  }).catch(next);
+});
+/*
+router.post('/course', function (req, res) {
+    var courseTitle = req.body.courseTitle;
+    console.log(courseTitle);
+});
+*/
+router.put('/course/:id', (req, res, next) => {
+  res.send(`PUT REQUEST!`)
 });
 
-router.put('/course/:id', (req, res) => {
-  res.send(`Your SERVER is now running on port 3000.`)
-});
-
-router.delete('/course/:id', (req, res) => {
-  res.send(`Your SERVER is now running on port 3000.`)
+router.delete('/course/:id', (req, res, next) => {
+  res.send(`DELETE REQUEST!`)
 });
 
 

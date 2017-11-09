@@ -12,10 +12,17 @@ mongoose.connect('mongodb://localhost/saicdb',{
   useMongoClient: true
 });
 
+app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/saic', routes);
+app.use(routes);
+
+// Error Handling middleware
+app.use(function(err, req, res, next){
+  console.log(err);
+});
 
 app.listen(PORT, () => {
   console.log(`Your SERVER is now running on port ${PORT}. Press CTRL + C to terminate the SERVER`);
