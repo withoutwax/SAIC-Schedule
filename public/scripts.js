@@ -1,14 +1,30 @@
 $(document).ready(function() {
 
+	// Gets data for the DATE & Time
+	var dateVal;
+	var timeVal;
+
+	$(".dateInput").change(function(){
+		var date = $(this).find("option:selected").text();
+		dateVal = date;
+	});
+
+	$(".timeInput").change(function(){
+		var time = $(this).find("option:selected").text();
+		timeVal = time;
+	});
+
+
 	// Connecting to Endpoint via AJAX
 	$("#submitButton").on('click', function() {
 		var courseData = {
 			courseTitle: $('input#courseTitleInput').val(),
 			courseNumber: $('input#courseNumberInput').val(),
 			roomNumber: $('input#roomInput').val(),
-			instructor: $('input#instructorInput').val()
+			instructor: $('input#instructorInput').val(),
+			date: dateVal,
+			time: timeVal
 		}
-
 
 		$.ajax({
 			url: '/course',
@@ -27,13 +43,34 @@ $(document).ready(function() {
 		});
 	});
 
-	$("#getRequestButton").on('click', function() {
+	$("#getRequestButton").on('click', function(e) {
+		e.preventDefault(); // Prevents browser from auto-refreshing.
+    e.stopPropagation();
+
 		$.ajax({
 			url: '/course',
 			type: 'GET',
+			dataType: 'json',
 
 			success: function(data) {
-				console.log(data[0].courseTitle);
+
+				alert(data[0].courseTitle);
+
+				for (var i = 0; i < data.length; i++) {
+
+					$('#resultOutput').append(`
+						<div class="col-sm-2">
+							<div>${data[i].courseTitle}</div>
+							<div>${data[i].courseNumber}</div>
+							<div>${data[i].roomNumber}</div>
+							<div>${data[i].instructor}</div>
+							<div>${data[i].date}</div>
+							<div>${data[i].time}</div>
+						</div>
+						`);
+
+					console.log(data[i].courseTitle);
+				}
 			},
 			error: function(jqXhr, textStatus, errorMessage) {
 				// error Callback
@@ -41,43 +78,6 @@ $(document).ready(function() {
 		});
 	});
 
-
-		/*
-		$.ajax({
-			url: '/course',
-			dataType: "json",
-			type: 'POST',
-			contentType:"application/json",
-			data: JSON.stringify(courseData),
-			processData: false,
-
-
-			success: function(data) {
-				console.log('success');
-				console.log(data);
-			},
-			error: function (xhr, status, error) {
-        console.log('Error: ' + error.message);
-      },
-
-		});
-		*/
-
-	/*
-	function getItem() {
-		$.ajax({
-			url: '/course',
-			type: 'GET',
-			success: function(data) {
-				alert('success');
-			},
-			error: function (xhr, status, error) {
-        console.log('Error: ' + error.message);
-      },
-
-		});
-	}
-*/
 
 
 
@@ -108,16 +108,10 @@ $(document).ready(function() {
 	$("#submitButton").click(function(e) {
 		e.preventDefault(); //Bootstrap button refreshes page as a default - since this refreshes the jQuery code as well, this code will prevent from the default page loader.
 
-
-
 		 var courseTitleVal = $('input#courseTitleInput').val();
 		 var courseNumberVal = $('input#courseNumberInput').val();
 		 var roomNumberVal = $('input#roomInput').val();
 		 var instructorVal = $('input#instructorInput').val();
-
-
-
-
 
 
 		$("#dateOutput").text(dateVal);

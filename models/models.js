@@ -8,16 +8,24 @@ const SAICSchema = new Schema({
     required: true
   },
   courseNumber: {
-    type: Number
+    type: Number,
+    default: ''
   },
   roomNumber: {
-    type: Number
+    type: Number,
+    default: ''
   },
   instructor: {
-    type: String
+    type: String,
+    default: ''
   },
   date: {
-    type: String
+    type: String,
+    required: true
+  },
+  time: {
+    type: String,
+    required: true
   }
 });
 

@@ -21,7 +21,7 @@ app.use(routes);
 
 // Error Handling middleware
 app.use(function(err, req, res, next){
-  console.log(err);
+  console.log('ERROR IS FOUND!');
 });
 
 app.listen(PORT, () => {

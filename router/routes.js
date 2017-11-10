@@ -9,7 +9,7 @@ router.get('/course', (req, res, next) => {
 });
 
 
-router.post('/course', (req, res, next) => {
+router.post('/course', (err, req, res, next) => {
   SAICdb.create(req.body).then(function(schedule){
     return res.send(schedule);
     console.log("The data has been entered into the database");
