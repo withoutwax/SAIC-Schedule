@@ -2,10 +2,12 @@
   "name": "saicschedule",
   "version": "1.0.0",
   "description": "This is simple Full-Stack Web application which shows the Time Schedule for the semester. All the input are inserted through the input bar and displayed on the same webpage.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js --exec babel-node --presets es2015,stage-0"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server.js",
+    "client": "node start-client.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "concurrently": "^3.5.0"
   }
 }
