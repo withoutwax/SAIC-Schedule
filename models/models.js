@@ -20,12 +20,10 @@ const SAICSchema = new Schema({
     default: ''
   },
   date: {
-    type: String,
-    required: true
+    type: String
   },
   time: {
-    type: String,
-    required: true
+    type: String
   }
 });
 

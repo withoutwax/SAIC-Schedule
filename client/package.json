@@ -2,7 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "dependencies": {
+    "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.9",
