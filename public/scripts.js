@@ -66,6 +66,7 @@ $(document).ready(function() {
 							<div>${data[i].instructor}</div>
 							<div>${data[i].date}</div>
 							<div>${data[i].time}</div>
+							<button class="btn courseDelete" id="${data[i]._id}">DELETE</button>
 						</div>
 						`);
 
@@ -76,6 +77,24 @@ $(document).ready(function() {
 				// error Callback
 			}
 		});
+	});
+
+	$(".courseDelete").on('click', function() {
+		e.preventDefault(); // Prevents browser from auto-refreshing.
+    e.stopPropagation();
+		alert("DELETE BUTTON");
+		/*
+		$.ajax({
+			url: '/course/:id',
+    	type: 'DELETE',
+			success: function(data) {
+				alert("The data has been removed from the database")
+			},
+			error: function(jqXhr, textStatus, errorMessage) {
+
+			}
+		});
+		*/
 	});
 
 

@@ -26,7 +26,11 @@ router.put('/course/:id', (req, res, next) => {
 });
 
 router.delete('/course/:id', (req, res, next) => {
-  res.send(`DELETE REQUEST!`)
+  SAICdb.findByIdAndRemove({_id: req.params.id}, function(err, docs) {
+    if(err) res.json(err);
+		else    res.redirect('/view');
+    console.log("The data has been removed from the database");
+  });
 });
 
 
