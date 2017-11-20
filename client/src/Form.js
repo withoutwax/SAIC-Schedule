@@ -25,7 +25,7 @@ class Form extends React.Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
     //const { courseTitle, courseNumber, roomNumber, instructor } = this.state;
 
     /*

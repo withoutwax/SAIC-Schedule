@@ -24,10 +24,8 @@ class Course extends React.Component {
   render() {
     var notes = this.state.courses;
     notes = notes.map((data) => {
-      console.log(data);
-      console.log(data.courseTitle);
       return (
-        <CourseData courseTitle={data.courseTitle} courseNumber={data.courseNumber} roomNumber={data.roomNumber} instructor={data.instructor}/>
+        <CourseData key={data._id} courseTitle={data.courseTitle} courseNumber={data.courseNumber} roomNumber={data.roomNumber} instructor={data.instructor} id={data._id}/>
       );
     });
 
