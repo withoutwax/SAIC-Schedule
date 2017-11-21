@@ -8,6 +8,7 @@ class Course extends React.Component {
     this.state = {
       courses: []
     }
+    // this.handleUpdate = this.handleUpdate.bind(this);
   }
   componentDidMount() {
     fetch('http://localhost:3001/course')
@@ -21,6 +22,9 @@ class Course extends React.Component {
         // console.log(data);
       });
   }
+  // handleUpdate(data) {
+  //   console.log(data);
+  // }
   render() {
     var notes = this.state.courses;
     notes = notes.map((data) => {

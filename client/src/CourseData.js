@@ -5,8 +5,11 @@ class CourseData extends React.Component {
   constructor() {
     super();
     this.state = {
+      courseTitle: '',
+      courseNumber: '',
+      roomNumber: '',
+      instructor: ''
     }
-
     this.deleteCourse = this.deleteCourse.bind(this);
   }
   deleteCourse() {
@@ -22,7 +25,16 @@ class CourseData extends React.Component {
         alert("Delete Fail");
         console.log(error);
       });
+      // Need to find a better method
       window.location.reload();
+      
+      // this.setState({
+      //   courseTitle: this.props.courseTitle,
+      //   courseNumber: this.props.courseNumber,
+      //   roomNumber: this.props.roomNumber,
+      //   instructor: this.props.instructor
+      // });
+      // this.props.handleUpdate(this.state);
   }
   render() {
     return (
