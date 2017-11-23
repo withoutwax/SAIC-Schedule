@@ -1,6 +1,5 @@
 import React from 'react';
 import CourseData from './CourseData';
-import 'bootstrap/dist/css/bootstrap.css';
 
 class Course extends React.Component {
   constructor() {
